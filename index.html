@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rescue Net</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="game-container" id="gameContainer">
+  <div class="sky" id="sky"></div>
+  <div class="wave-layer"></div>
+  <div class="wave-layer2"></div>
+  <div class="light-rays" id="lightRays"></div>
+  <div id="stars"></div>
+  <div id="stormOverlay"></div>
+  <div id="nightOverlay"></div>
+  <div id="lightning"></div>
+  <div id="damageFlash"></div>
+  <div id="dayFlash"></div>
+  <div id="stations"></div>
+  <div class="vignette"></div>
+
+  <!-- BOSS WAVE -->
+  <div id="bossOverlay">
+    <div id="bossBg"></div>
+    <div id="bossText">
+      <div class="boss-warning">⚠️ WARNING ⚠️</div>
+      <div class="boss-title" id="bossTitleText">WAVE INCOMING</div>
+      <div class="boss-sub" id="bossSubText">Brace all nets — massive surge approaching!</div>
+    </div>
+  </div>
+  <div id="bossBarWrap"><div id="bossBar"><div id="bossBarFill"></div></div></div>
+
+  <!-- CINEMATIC -->
+  <div id="cinematicOverlay">
+    <div id="cinematicBg"></div>
+    <div id="cinematicText">
+      <div class="cin-chain" id="cinChain"></div>
+      <div class="cin-pts"   id="cinPts"></div>
+      <div class="cin-sub"   id="cinSub"></div>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="hud-left">
+      <div class="stat"><div class="stat-label">Day</div><div class="stat-value gold" id="dayNum">1</div></div>
+      <div class="stat"><div class="stat-label">Score</div><div class="stat-value" id="scoreNum">0</div></div>
+      <div class="stat"><div class="stat-label">Lives</div><div class="stat-value red" id="livesNum">5</div></div>
+      <div class="stat"><div class="stat-label">Money</div><div class="stat-value green" id="moneyNum">$50</div></div>
+      <div id="comboBadge"></div>
+      <div id="weatherBadge"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div id="tierBadge" class="tier-badge">NET LV.1</div>
+      <div id="multBadge" class="mult-badge" style="display:none">×1.0 pts</div>
+    </div>
+    <div class="hud-right">
+      <div id="powerupHUD">
+        <span class="pup-icon" id="pup-shield" title="Shield">🛡️</span>
+        <span class="pup-icon" id="pup-speed"  title="Speed Boost">⚡</span>
+        <span class="pup-icon" id="pup-golden" title="Golden Mode">⭐</span>
+        <span class="pup-icon" id="pup-levi"   title="Levi Cutie ×2 💰" style="font-size:10px;font-weight:900;color:#d090ff;">💜</span>
+      </div>
+      <div class="health-bars" id="healthBars"></div>
+    </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls-panel">
+    <div class="controls-row" id="netControlsRow"></div>
+    <div class="global-row">
+      <button class="ctrl-btn btn-repair"  id="repairBtn">🔧 Repair ($25)</button>
+      <button class="ctrl-btn btn-upgrade" id="upgradeBtn">⬆️ Upgrade</button>
+      <button class="ctrl-btn btn-pause"   id="pauseBtn">⏸ Pause [P]</button>
+    </div>
+  </div>
+
+  <!-- START -->
+  <div class="overlay visible" id="startOverlay">
+    <div class="overlay-card">
+      <h1>🌊 Rescue Net</h1>
+      <p>Deploy nets to rescue children drifting downstream.<br>Debris damages nets — retract to dodge! Collect power-ups!</p>
+      <input class="ov-input" type="text" id="nameInput" placeholder="Enter your name" maxlength="20"/>
+      <button class="ov-btn green" id="startBtn">▶ START GAME</button>
+      <div id="startLB" style="width:100%"></div>
+    </div>
+  </div>
+
+  <!-- PAUSE -->
+  <div class="overlay" id="pauseOverlay">
+    <div class="overlay-card">
+      <h1>⏸ PAUSED</h1><p>Press P or click Resume</p>
+      <button class="ov-btn green" onclick="game.togglePause()">▶ RESUME</button>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div class="overlay" id="gameOverOverlay">
+    <div class="overlay-card">
+      <h1>💀 GAME OVER</h1>
+      <p id="goText"></p>
+      <button class="ov-btn green" id="tryAgainBtn">🔄 TRY AGAIN</button>
+      <button class="ov-btn blue"  id="lbBtn">🏆 LEADERBOARD</button>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD -->
+  <div class="overlay" id="lbOverlay">
+    <div class="overlay-card">
+      <h1>🏆 LEADERBOARD</h1>
+      <div class="lb-wrap"><div id="lbContent"></div></div>
+      <button class="ov-btn blue" id="lbBackBtn">← BACK</button>
+    </div>
+  </div>
+
+  <!-- UPGRADE MODAL -->
+  <div id="upgradeModal">
+    <h2>⬆️ Net Upgrades</h2>
+    <div class="sub">Each tier adds a net pillar and new perks</div>
+    <div id="upgradeRows"></div>
+    <button id="closeUpgrade">Close</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
